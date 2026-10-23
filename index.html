@@ -2,29 +2,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;600&family=Inter:wght@400;500;600&display=swap">
 <style>
-/* Layout: 医療者向けの実用サイトの作り。わずかに温かいグレーの地に白いカード、英数字は Inter・和文は IBM Plex Sans JP（太さは600まで）、差し色はくすみローズ1色。上に丸いタブ、見出しは左帯、一覧はカード、絞り込みは上部パネル。 */
+/* Layout: 医療者向けの実用サイトの作り。淡い光をにじませた地に半透明の面、英数字は Inter・和文は IBM Plex Sans JP（太さは600まで）、差し色は墨がかった青灰色1色（鮮やかな色は承認区分と緊急度だけ）。面はすりガラス＋柔らかい二重の影。上に丸いタブ、見出しは左帯、一覧はカード、絞り込みは上部パネル。 */
 :root{
-  --bg:#f7f5f5; --surface:#ffffff; --surface-2:#f8f6f6; --ink:#2b2a2e; --ink-2:#67636b; --line:#e5e0e1;
-  --accent:#9c4f62; --accent-ink:#843f50; --accent-soft:#f5e8eb; --on-accent:#ffffff; --scrim:rgba(20,16,18,.45);
+  --bg:#f1f4f7; --surface:#ffffff; --surface-2:rgba(255,255,255,.62); --ink:#1f2a33; --ink-2:#5b6773; --line:rgba(60,80,100,.14);
+  --accent:#3d5266; --accent-ink:#33475a; --accent-soft:#e6ebf0; --on-accent:#ffffff; --scrim:rgba(20,30,40,.4);
+  --glass:rgba(255,255,255,.58); --glass-edge:rgba(255,255,255,.78);
+  --soft:6px 6px 16px rgba(140,158,184,.20),-6px -6px 16px rgba(255,255,255,.75),0 10px 30px rgba(40,60,90,.06);
+  --soft-sm:3px 3px 8px rgba(140,158,184,.22),-3px -3px 8px rgba(255,255,255,.8);
   --ok:#1a7f4f; --cert:#2563a8; --no:#3d3d3d; --cos:#7a4fb0; --unk:#777777; --tag-ink:#ffffff;
   --note-bg:#fff6d9; --note-ink:#6b4e00; --photo:#ffffff; --sev:#c62828; --sev-soft:#fdecea;
+  color-scheme:light;
   --font:"Inter","IBM Plex Sans JP","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic UI","Meiryo",system-ui,sans-serif;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#18171a; --surface:#222024; --surface-2:#2a282c; --ink:#efecee; --ink-2:#aaa5ac; --line:#3a373c;
-    --accent:#e29aac; --accent-ink:#ecb1bf; --accent-soft:#3a2329; --on-accent:#200f15; --scrim:rgba(0,0,0,.65);
-    --ok:#4cc38a; --cert:#74aceb; --no:#d4d4d4; --cos:#b9a0f0; --unk:#9a9a9a; --tag-ink:#141414;
-    --note-bg:#3a3012; --note-ink:#f1d98a; --photo:#f2f2f2; --sev:#ff8a7d; --sev-soft:#3a1c19;
-    color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#18171a; --surface:#222024; --surface-2:#2a282c; --ink:#efecee; --ink-2:#aaa5ac; --line:#3a373c;
-  --accent:#e29aac; --accent-ink:#ecb1bf; --accent-soft:#3a2329; --on-accent:#200f15; --scrim:rgba(0,0,0,.65);
-  --ok:#4cc38a; --cert:#74aceb; --no:#d4d4d4; --cos:#b9a0f0; --unk:#9a9a9a; --tag-ink:#141414;
-  --note-bg:#3a3012; --note-ink:#f1d98a; --photo:#f2f2f2; --sev:#ff8a7d; --sev-soft:#3a1c19;
-  color-scheme:dark;
 }
 *{box-sizing:border-box}
 b,strong,h1,h2,h3,h4,th{font-weight:600}
@@ -389,6 +377,30 @@ footer{padding-block:18px 26px;font-size:12px;color:var(--ink-2)}
   .kv{grid-template-columns:minmax(0,1fr);gap:0 0}
   .kv>span:nth-child(even){padding-bottom:6px}
 }
+
+/* すりガラス：背景に淡い光をにじませ、その上に半透明の面を重ねる。影は左上の光と右下の影を淡く付ける */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:
+ radial-gradient(40vw 32vw at 10% 6%, rgba(150,190,220,.42), transparent 70%),
+ radial-gradient(36vw 30vw at 90% 16%, rgba(190,182,230,.32), transparent 70%),
+ radial-gradient(42vw 34vw at 72% 86%, rgba(160,215,210,.32), transparent 70%),
+ radial-gradient(32vw 28vw at 18% 82%, rgba(200,215,235,.42), transparent 70%)}
+.top{background:rgba(255,255,255,.55);-webkit-backdrop-filter:blur(18px) saturate(1.6);backdrop-filter:blur(18px) saturate(1.6);border-bottom:1px solid var(--glass-edge);box-shadow:0 1px 0 rgba(60,80,100,.08),0 6px 18px rgba(40,60,90,.05)}
+.box,.entry button,.card,.pcard,.acard,.ccard,.genres,.points,.tblw,.lfig,details.unv{background:var(--glass)!important;border:1px solid var(--glass-edge)!important;border-radius:14px!important;box-shadow:var(--soft)}
+.box,.entry button{-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4)}
+.icons .ic,.skinbtns button{background:rgba(255,255,255,.65);box-shadow:var(--soft-sm)}
+.ivis{border-radius:14px;border-color:var(--glass-edge);box-shadow:var(--soft)}
+.tabs button,.chip,.rel button,.top-search,.favb{background:rgba(255,255,255,.6);border-color:var(--glass-edge);box-shadow:var(--soft-sm)}
+.tabs button[aria-current="page"]{border:1px solid rgba(61,82,102,.35);background:rgba(255,255,255,.75);padding:5px 15px;box-shadow:inset 2px 2px 5px rgba(140,158,184,.28),inset -2px -2px 5px rgba(255,255,255,.9)}
+.h h2{border-left-width:3px}
+.btn{border-radius:99px!important;box-shadow:0 6px 18px rgba(61,82,102,.22),-3px -3px 8px rgba(255,255,255,.7)}
+.tray{background:rgba(255,255,255,.7);-webkit-backdrop-filter:blur(18px) saturate(1.5);backdrop-filter:blur(18px) saturate(1.5)}
+.searchbox,.filter{background:var(--glass)!important;border:1px solid var(--glass-edge)!important;border-radius:14px!important;box-shadow:var(--soft)}
+.kinds button{background:rgba(255,255,255,.6);border-radius:10px;box-shadow:var(--soft-sm)}
+.kinds button[aria-pressed="true"]{border-bottom-color:transparent;background:rgba(255,255,255,.8);box-shadow:inset 2px 2px 5px rgba(140,158,184,.28),inset -2px -2px 5px rgba(255,255,255,.9)}
+.filter>summary::after{border-radius:6px;border-color:rgba(61,82,102,.5)}
+.aplead{background:rgba(61,82,102,.06)!important}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.top,.box,.entry button,.tray{background:rgba(255,255,255,.92)!important}}
+@media (max-width:720px){.box,.entry button{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(255,255,255,.78)!important}}
 </style>
 
 <header class="top">
