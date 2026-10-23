@@ -1,45 +1,47 @@
 <!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="description" content="美容皮膚科の機器・製剤・疾患・合併症を、国内の承認状況と出典つきで整理した試作版。"><style>body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style></head><body><title>美容皮膚科まとめサイト</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;600&family=Inter:wght@400;500;600&display=swap">
 <style>
-/* Layout: 医療者向けの実用サイトの作り。明るいグレーの地に白いカード、太字ゴシック、差し色はオレンジ1色。上に丸いタブ、見出しは左帯、一覧はカード、絞り込みは上部パネル。 */
+/* Layout: 医療者向けの実用サイトの作り。わずかに温かいグレーの地に白いカード、英数字は Inter・和文は IBM Plex Sans JP（太さは600まで）、差し色はくすみローズ1色。上に丸いタブ、見出しは左帯、一覧はカード、絞り込みは上部パネル。 */
 :root{
-  --bg:#f4f4f4; --surface:#ffffff; --surface-2:#f7f7f7; --ink:#222222; --ink-2:#6a6a6a; --line:#e2e2e2;
-  --accent:#f06a1d; --accent-ink:#c44d08; --accent-soft:#fff1e7; --on-accent:#ffffff; --scrim:rgba(0,0,0,.45);
+  --bg:#f7f5f5; --surface:#ffffff; --surface-2:#f8f6f6; --ink:#2b2a2e; --ink-2:#67636b; --line:#e5e0e1;
+  --accent:#9c4f62; --accent-ink:#843f50; --accent-soft:#f5e8eb; --on-accent:#ffffff; --scrim:rgba(20,16,18,.45);
   --ok:#1a7f4f; --cert:#2563a8; --no:#3d3d3d; --cos:#7a4fb0; --unk:#777777; --tag-ink:#ffffff;
   --note-bg:#fff6d9; --note-ink:#6b4e00; --photo:#ffffff; --sev:#c62828; --sev-soft:#fdecea;
-  --font:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;
+  --font:"Inter","IBM Plex Sans JP","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic UI","Meiryo",system-ui,sans-serif;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#161616; --surface:#222222; --surface-2:#2b2b2b; --ink:#f0f0f0; --ink-2:#a9a9a9; --line:#3a3a3a;
-    --accent:#ff8a47; --accent-ink:#ff9d63; --accent-soft:#3a2416; --on-accent:#1c0f06; --scrim:rgba(0,0,0,.65);
+    --bg:#18171a; --surface:#222024; --surface-2:#2a282c; --ink:#efecee; --ink-2:#aaa5ac; --line:#3a373c;
+    --accent:#e29aac; --accent-ink:#ecb1bf; --accent-soft:#3a2329; --on-accent:#200f15; --scrim:rgba(0,0,0,.65);
     --ok:#4cc38a; --cert:#74aceb; --no:#d4d4d4; --cos:#b9a0f0; --unk:#9a9a9a; --tag-ink:#141414;
     --note-bg:#3a3012; --note-ink:#f1d98a; --photo:#f2f2f2; --sev:#ff8a7d; --sev-soft:#3a1c19;
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#161616; --surface:#222222; --surface-2:#2b2b2b; --ink:#f0f0f0; --ink-2:#a9a9a9; --line:#3a3a3a;
-  --accent:#ff8a47; --accent-ink:#ff9d63; --accent-soft:#3a2416; --on-accent:#1c0f06; --scrim:rgba(0,0,0,.65);
+  --bg:#18171a; --surface:#222024; --surface-2:#2a282c; --ink:#efecee; --ink-2:#aaa5ac; --line:#3a373c;
+  --accent:#e29aac; --accent-ink:#ecb1bf; --accent-soft:#3a2329; --on-accent:#200f15; --scrim:rgba(0,0,0,.65);
   --ok:#4cc38a; --cert:#74aceb; --no:#d4d4d4; --cos:#b9a0f0; --unk:#9a9a9a; --tag-ink:#141414;
   --note-bg:#3a3012; --note-ink:#f1d98a; --photo:#f2f2f2; --sev:#ff8a7d; --sev-soft:#3a1c19;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
+b,strong,h1,h2,h3,h4,th{font-weight:600}
 body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:15px;line-height:1.7;-webkit-text-size-adjust:100%}
 button,input{font:inherit;color:inherit}
 button{cursor:pointer}
 a{color:var(--accent-ink);text-underline-offset:3px}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 h1,h2,h3,p{margin:0}
-h1,h2,h3{font-weight:700;line-height:1.45}
+h1,h2,h3{font-weight:600;line-height:1.45}
 .num{font-variant-numeric:tabular-nums}
 .wrap{max-width:1080px;margin-inline:auto;padding-inline:16px}
 
 /* header */
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
 .top-in{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:10px}
-.brand{background:none;border:0;padding:0;font-weight:700;font-size:18px;letter-spacing:.02em}
+.brand{background:none;border:0;padding:0;font-weight:600;font-size:18px;letter-spacing:.02em}
 .brand i{font-style:normal;color:var(--accent)}
 .top-search{display:flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:99px;padding:5px 14px;background:var(--surface-2);color:var(--ink-2);font-size:13.5px}
 .top-search svg{width:16px;height:16px}
@@ -47,7 +49,7 @@ h1,h2,h3{font-weight:700;line-height:1.45}
 .tabs::-webkit-scrollbar{display:none}
 .tabs button{flex:none;border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:5px 15px;font-size:13.5px;color:var(--ink)}
 .tabs button:hover{border-color:var(--accent)}
-.tabs button[aria-current="page"]{border:2px solid var(--accent);color:var(--accent-ink);font-weight:700;padding:4px 14px}
+.tabs button[aria-current="page"]{border:2px solid var(--accent);color:var(--accent-ink);font-weight:600;padding:4px 14px}
 .tabs button[aria-current="page"]::before{content:"✓ "}
 .tabs .n{margin-left:4px;font-size:12px}
 
@@ -81,7 +83,7 @@ main{padding-block:20px 100px}
 .skinnav{display:grid;grid-template-columns:200px minmax(0,260px);justify-content:center;gap:0;padding:20px 12px}
 .skinnav svg{width:200px;height:420px;display:block;color:var(--ink-2)}
 .skinbtns{display:grid;grid-template-rows:repeat(7,60px)}
-.skinbtns button{align-self:center;display:flex;justify-content:space-between;align-items:center;gap:10px;height:42px;border:1px solid var(--ink-2);background:var(--surface);border-radius:4px;padding:0 14px;font-weight:700;font-size:14.5px}
+.skinbtns button{align-self:center;display:flex;justify-content:space-between;align-items:center;gap:10px;height:42px;border:1px solid var(--ink-2);background:var(--surface);border-radius:4px;padding:0 14px;font-weight:600;font-size:14.5px}
 .skinbtns button:hover{border-color:var(--accent);color:var(--accent-ink)}
 .skinbtns .n{font-weight:400;font-size:12px;color:var(--ink-2)}
 
@@ -122,7 +124,7 @@ main{padding-block:20px 100px}
 .srcs .ng{color:var(--note-ink)}
 
 /* status tags */
-.tag{display:inline-block;font-size:11.5px;font-weight:700;line-height:1.7;padding:0 8px;border-radius:3px;color:var(--tag-ink);white-space:nowrap}
+.tag{display:inline-block;font-size:11.5px;font-weight:600;line-height:1.7;padding:0 8px;border-radius:3px;color:var(--tag-ink);white-space:nowrap}
 .tag.ok{background:var(--ok)} .tag.cert{background:var(--cert)} .tag.no{background:var(--no)} .tag.cos{background:var(--cos)}
 .tag.unk{background:none;color:var(--unk);box-shadow:inset 0 0 0 1px var(--unk)}
 .tag.ind{background:none;box-shadow:inset 0 0 0 1px currentColor;font-weight:500}
@@ -138,10 +140,10 @@ main{padding-block:20px 100px}
 .searchbox:focus-within{border-color:var(--accent)}
 .kinds{display:flex;flex-wrap:wrap;gap:6px}
 .kinds button{border:0;background:var(--surface);padding:9px 16px;border-radius:4px;font-size:14px;border-bottom:3px solid transparent}
-.kinds button[aria-pressed="true"]{border-bottom-color:var(--accent);color:var(--accent-ink);font-weight:700}
+.kinds button[aria-pressed="true"]{border-bottom-color:var(--accent);color:var(--accent-ink);font-weight:600}
 .kinds .n{font-size:12px;color:var(--ink-2);margin-left:5px;font-weight:400}
 .filter{background:var(--surface);border-radius:6px}
-.filter>summary{list-style:none;display:flex;align-items:center;gap:10px;padding:14px 16px;font-weight:700;cursor:pointer}
+.filter>summary{list-style:none;display:flex;align-items:center;gap:10px;padding:14px 16px;font-weight:600;cursor:pointer}
 .filter>summary::-webkit-details-marker{display:none}
 .filter>summary svg{width:20px;height:20px}
 .filter>summary::after{content:"＋";margin-left:auto;flex:none;width:22px;height:22px;border:1.5px solid var(--ink);border-radius:3px;display:grid;place-items:center;font-size:13px;line-height:1}
@@ -163,23 +165,23 @@ main{padding-block:20px 100px}
 .gbtn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--surface-2);border-radius:5px;padding:4px 10px 4px 7px;font-size:13.5px;line-height:1.5}
 .gbtn svg{width:20px;height:20px;color:var(--ink-2);flex:none}
 .gbtn .n{font-size:11.5px;color:var(--ink-2)}
-.gbtn[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-ink);font-weight:700}
+.gbtn[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-ink);font-weight:600}
 .gbtn[aria-pressed="true"] svg{color:var(--accent)}
 .factions{display:flex;justify-content:flex-end;gap:10px;padding-top:12px}
-.btn{border:1px solid var(--accent);background:var(--accent);color:var(--on-accent);border-radius:99px;padding:8px 22px;font-weight:700;font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn{border:1px solid var(--accent);background:var(--accent);color:var(--on-accent);border-radius:99px;padding:8px 22px;font-weight:600;font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
 .btn.line{background:var(--surface);color:var(--accent-ink)}
 .btn.grey{border-color:var(--line);background:var(--surface);color:var(--ink);font-weight:500}
 .count{font-size:13.5px;color:var(--ink-2)}
 .count b{color:var(--ink);font-size:16px}
 .pgrid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,430px),1fr));gap:10px}
-.gh{grid-column:1/-1;font-weight:700;font-size:15px;padding-top:14px}
+.gh{grid-column:1/-1;font-weight:600;font-size:15px;padding-top:14px}
 .gh small{font-weight:400;color:var(--ink-2);font-size:12.5px;margin-left:8px}
 .sh{grid-column:1/-1;font-size:13px;color:var(--ink-2);font-weight:500;padding-top:2px}
 .pcard{background:var(--surface);border-radius:6px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px}
 .pmain{background:none;border:0;text-align:left;padding:12px 4px 12px 12px;display:grid;grid-template-columns:72px minmax(0,1fr);gap:4px 12px;align-content:start;min-width:0}
 .pmain>.thumb{grid-row:1 / span 4}
 .pmain>:not(.thumb){grid-column:2}
-.pname{font-weight:700;font-size:15.5px;line-height:1.45}
+.pname{font-weight:600;font-size:15.5px;line-height:1.45}
 .pmain:hover .pname{color:var(--accent-ink)}
 .pmaker{font-size:12.5px;color:var(--ink-2)}
 .pks{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:0 10px;font-size:12.5px;line-height:1.65;margin:2px 0}
@@ -256,7 +258,7 @@ figure{margin:0}
 .lfig{background:var(--surface);border-radius:6px;padding:12px 16px;display:grid;gap:8px}
 .lbar{display:flex;flex-wrap:wrap;gap:6px}
 .lbar span{font-size:12.5px;border-radius:3px;padding:1px 10px;border:1px solid var(--line);color:var(--ink-2)}
-.lbar span.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:700}
+.lbar span.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
 figcaption{font-size:12.5px;color:var(--ink-2)}
 .rel{display:flex;flex-wrap:wrap;gap:8px}
 .rel button{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:5px;padding:5px 10px;font-size:13.5px;text-align:left}
@@ -266,9 +268,9 @@ figcaption{font-size:12.5px;color:var(--ink-2)}
 .refs a{overflow-wrap:anywhere}
 .kind{font-size:11.5px;border:1px solid var(--line);border-radius:3px;padding:0 6px;margin-right:6px;color:var(--ink-2);white-space:nowrap}
 details.unv{background:var(--surface);border-radius:6px;padding:12px 16px;font-size:13px}
-details.unv summary{cursor:pointer;font-weight:700}
+details.unv summary{cursor:pointer;font-weight:600}
 details.unv ul{margin:10px 0 0;padding-left:1.2em;display:grid;gap:6px;color:var(--ink-2)}
-.minih{font-size:14px;font-weight:700;margin-bottom:8px}
+.minih{font-size:14px;font-weight:600;margin-bottom:8px}
 .alist{list-style:none;margin:0;padding:0;display:grid;gap:8px}
 
 /* 疾患・悩み / 合併症 */
@@ -278,8 +280,8 @@ details.unv ul{margin:10px 0 0;padding-left:1.2em;display:grid;gap:6px;color:var
 .ccard b{font-size:15.5px;line-height:1.5}
 .ccard:hover b{color:var(--accent-ink)}
 .ccard .ln{font-size:12.5px;color:var(--ink-2);line-height:1.65}
-.ccard .ln i{font-style:normal;font-weight:700;color:var(--ink)}
-.sev{display:inline-block;font-size:11.5px;font-weight:700;line-height:1.7;padding:0 8px;border-radius:3px;white-space:nowrap}
+.ccard .ln i{font-style:normal;font-weight:600;color:var(--ink)}
+.sev{display:inline-block;font-size:11.5px;font-weight:600;line-height:1.7;padding:0 8px;border-radius:3px;white-space:nowrap}
 .sev.s1{background:var(--sev);color:var(--tag-ink)}
 .sev.s2{background:var(--note-bg);color:var(--note-ink);box-shadow:inset 0 0 0 1px var(--note-ink)}
 .sev.s3{color:var(--unk);box-shadow:inset 0 0 0 1px var(--unk)}
@@ -329,7 +331,7 @@ details.more-txt,details.more-src{margin:4px 0 0}details.more-txt>summary,detail
 .presets{display:grid;gap:10px;justify-items:start}
 .presets .rel{gap:8px}
 .presets p,.presets .rel button{color:var(--ink)}
-.ctbl tr.kp th[scope="row"]{color:var(--ink);font-weight:700}
+.ctbl tr.kp th[scope="row"]{color:var(--ink);font-weight:600}
 .catlinks{display:flex;flex-wrap:wrap;gap:4px 16px}
 #q-links{display:grid;gap:8px}
 #q-links .rel{align-items:center}
@@ -354,7 +356,7 @@ details.more-txt,details.more-src{margin:4px 0 0}details.more-txt>summary,detail
 .sttbl{border-collapse:collapse;font-size:14px;width:100%}
 .sttbl th,.sttbl td{padding:9px 14px;border-top:1px solid var(--line);text-align:left;white-space:nowrap}
 .sttbl thead th{border-top:0;font-weight:500}
-.sttbl td button{background:none;border:0;padding:1px 6px;border-radius:3px;color:var(--accent-ink);font-weight:700}
+.sttbl td button{background:none;border:0;padding:1px 6px;border-radius:3px;color:var(--accent-ink);font-weight:600}
 .sttbl td button:hover{background:var(--accent-soft)}
 .zero{padding:1px 6px;color:var(--ink-2)}
 
@@ -1293,7 +1295,7 @@ footer{padding-block:18px 26px;font-size:12px;color:var(--ink-2)}
       ['海外の承認', function(i){return esc(i.overseas)||na;}]
     ]);
     var h = '<h2 class="sect">機種ごとの仕様と承認</h2><div class="card tblw"><table class="ctbl"><thead><tr><th></th>'+sel.map(function(i){
-      return '<th scope="col">'+thumb(i,'sm')+'<br><button type="button" class="more" data-item="'+i.id+'" style="font-size:15px;font-weight:700;text-align:left;white-space:normal">'+esc(i.name)+'</button><small>'+esc(i.maker)+'</small><button type="button" class="more" data-uncmp="'+i.id+'">外す</button></th>';
+      return '<th scope="col">'+thumb(i,'sm')+'<br><button type="button" class="more" data-item="'+i.id+'" style="font-size:15px;font-weight:600;text-align:left;white-space:normal">'+esc(i.name)+'</button><small>'+esc(i.maker)+'</small><button type="button" class="more" data-uncmp="'+i.id+'">外す</button></th>';
     }).join('')+'</tr></thead><tbody>'+F.map(function(f){
       return '<tr'+(f[2]?' class="kp"':'')+'><th scope="row">'+f[0]+'</th>'+sel.map(function(i){return '<td>'+f[1](i)+'</td>';}).join('')+'</tr>';
     }).join('')+'</tbody></table></div><p class="sub">「未確認」は、このサイトが確認した資料に記載がないことを示します。その機能や仕様がないという意味ではありません。</p>';
